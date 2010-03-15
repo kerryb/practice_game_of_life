@@ -9,7 +9,7 @@ Feature: Evolving a dead cell
       | . | . | . |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
 
   Scenario: Dead cell with 1 neighbor stays dead
     Given the following setup
@@ -17,7 +17,7 @@ Feature: Evolving a dead cell
       | . | . | . |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
     
   Scenario: Dead cell with 2 neighbors stays dead
     Given the following setup
@@ -25,7 +25,7 @@ Feature: Evolving a dead cell
       | . | . | x |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
     
   Scenario: Dead cell with 3 neighbors comes to life
     Given the following setup
@@ -33,7 +33,7 @@ Feature: Evolving a dead cell
       | . | . | . |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be alive
+    Then the centre cell should be alive
     
   Scenario: Dead cell with 4 neighbors stays dead
     Given the following setup
@@ -41,7 +41,7 @@ Feature: Evolving a dead cell
       | . | . | x |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
     
   Scenario: Dead cell with 5 neighbors stays dead
     Given the following setup
@@ -49,7 +49,7 @@ Feature: Evolving a dead cell
       | x | . | x |
       | . | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
     
   Scenario: Dead cell with 6 neighbors stays dead
     Given the following setup
@@ -57,7 +57,7 @@ Feature: Evolving a dead cell
       | x | . | x |
       | x | . | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
 
   Scenario: Dead cell with 7 neighbors stays dead
     Given the following setup
@@ -65,7 +65,7 @@ Feature: Evolving a dead cell
       | x | . | x |
       | x | x | . |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
     
   Scenario: Dead cell with 8 neighbors stays dead
     Given the following setup
@@ -73,4 +73,4 @@ Feature: Evolving a dead cell
       | x | . | x |
       | x | x | x |
     When I evolve the board
-    Then the center cell should be dead
+    Then the centre cell should be dead
