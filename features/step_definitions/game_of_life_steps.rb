@@ -10,11 +10,11 @@ When "I evolve the board" do
 end
 
 Then "the centre cell should be dead" do
-  @game.life_at(@centre_x, @centre_y).should be_true
+  @game.life_at(@centre_x, @centre_y).should be_false
 end
 
 Then "the centre cell should be alive" do
-  @game.life_at(@centre_x, @centre_y).should be_false
+  @game.life_at(@centre_x, @centre_y).should be_true
 end
 
 Then "I should see the following board" do |table|
