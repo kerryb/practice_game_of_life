@@ -45,22 +45,6 @@ describe GameOfLife do
     end
 
     describe "when dead" do
-      describe "with 0 neighbours" do
-        it "stays dead" do
-          game = GameOfLife.new [%w(. . .), %w(. . .), %w(. . .)]
-          game.evolve
-          game.life_at(1, 1).should be_false
-        end
-      end
-
-      describe "with 1 neighbour" do
-        it "stays dead" do
-          game = GameOfLife.new [%w(. . .), %w(x . .), %w(. . .)]
-          game.evolve
-          game.life_at(1, 1).should be_false
-        end
-      end
-
       describe "with 2 neighbours" do
         it "stays dead" do
           game = GameOfLife.new [%w(. . .), %w(x . x), %w(. . .)]
@@ -82,6 +66,114 @@ describe GameOfLife do
           game = GameOfLife.new [%w(. x .), %w(x . x), %w(. x .)]
           game.evolve
           game.life_at(1, 1).should be_false
+        end
+      end
+    end
+  end
+
+  describe "edge cell" do
+    describe "when alive" do
+      describe "with 1 neighbour" do
+        it "dies" do
+          game = GameOfLife.new [%w(. . .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(1, 0).should be_false
+        end
+      end
+
+      describe "with 2 neighbours" do
+        it "lives" do
+          game = GameOfLife.new [%w(x . .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(1, 0).should be_true
+        end
+      end
+
+      describe "with 3 neighbours" do
+        it "lives" do
+          game = GameOfLife.new [%w(x x .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(1, 0).should be_true
+        end
+      end
+
+      describe "with 4 neighbours" do
+        it "dies" do
+          game = GameOfLife.new [%w(x x .), %w(x x .), %w(x . .)]
+          game.evolve
+          game.life_at(1, 0).should be_false
+        end
+      end
+    end
+
+    describe "when dead" do
+      describe "with 2 neighbours" do
+        it "stays dead" do
+          game = GameOfLife.new [%w(x . .), %w(. . .), %w(x . .)]
+          game.evolve
+          game.life_at(1, 0).should be_false
+        end
+      end
+
+      describe "with 3 neighbours" do
+        it "comes to life" do
+          game = GameOfLife.new [%w(x x .), %w(. x .), %w(. . .)]
+          game.evolve
+          game.life_at(1, 0).should be_true
+        end
+      end
+
+      describe "with 4 neighbours" do
+        it "stays dead" do
+          game = GameOfLife.new [%w(x x .), %w(. x .), %w(x . .)]
+          game.evolve
+          game.life_at(1, 0).should be_false
+        end
+      end
+    end
+  end
+
+  describe "corner cell" do
+    describe "when alive" do
+      describe "with 1 neighbour" do
+        it "dies" do
+          game = GameOfLife.new [%w(x . .), %w(x . .), %w(. . .)]
+          game.evolve
+          game.life_at(0, 0).should be_false
+        end
+      end
+
+      describe "with 2 neighbours" do
+        it "lives" do
+          game = GameOfLife.new [%w(x . .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(0, 0).should be_true
+        end
+      end
+
+      describe "with 3 neighbours" do
+        it "lives" do
+          game = GameOfLife.new [%w(x x .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(0, 0).should be_true
+        end
+      end
+    end
+
+    describe "when dead" do
+      describe "with 2 neighbours" do
+        it "stays dead" do
+          game = GameOfLife.new [%w(. . .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(0, 0).should be_false
+        end
+      end
+
+      describe "with 3 neighbours" do
+        it "comes to life" do
+          game = GameOfLife.new [%w(. x .), %w(x x .), %w(. . .)]
+          game.evolve
+          game.life_at(0, 0).should be_true
         end
       end
     end
