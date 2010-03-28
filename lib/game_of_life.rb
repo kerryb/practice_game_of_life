@@ -7,8 +7,8 @@ class GameOfLife
 
   def evolve
     new_grid = Array.new(grid.size) {Array.new(grid.first.size, ".")}
-    (0...grid.size).each do |x|
-      (0...grid.first.size).each do |y|
+    grid.each_with_index do |row, x|
+      row.each_with_index do |cell, y|
         neighbours = neighbours_of x, y
         living_neighbours = neighbours.count {|n| n == "x"}
         range_for_life = life_at(x, y) ? [2, 3] : [3]
