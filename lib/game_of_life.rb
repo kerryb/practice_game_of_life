@@ -10,12 +10,16 @@ class GameOfLife
     grid.each_with_index do |row, x|
       row.each_with_index do |cell, y|
         neighbours = neighbours_of x, y
-        living_neighbours = neighbours.count {|n| n == "x"}
-        range_for_life = life_at(x, y) ? [2, 3] : [3]
+        living_neighbours = neighbours.count {|n| alive?(n)}
+        range_for_life = alive?(cell) ? [2, 3] : [3]
         new_grid[x][y] = "x" if range_for_life.include?(living_neighbours)
       end
     end
     @grid = new_grid
+  end
+
+  def alive? cell
+    cell == "x"
   end
 
   def life_at x, y
